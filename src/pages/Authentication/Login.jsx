@@ -121,7 +121,7 @@ const Login = () => {
                             </div>
 
                             <div className="form-control mt-6">
-                                <input type="submit" className="] text-white font-bold btn hover:bg-[#235259] bg-[#2C4549] text-lg" value="Login" />
+                                <input type="submit" className="] text-[#f3a648] font-bold btn hover:bg-[#235259] bg-[#2C4549] text-lg" value="Login" />
                             </div>
                         </form>
                         <div className="pl-8 pb-7 font-primary font-medium text-lg text-center md:text-xl">

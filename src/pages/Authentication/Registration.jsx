@@ -118,7 +118,7 @@ const Registration = () => {
                                 {errors.password && <span className="text-red-500 mt-2 text-lg">This field is required</span>}
                             </div>
                             <div className="form-control mt-6">
-                                <input type="submit" className=" text-white font-bold btn hover:bg-[#235259] bg-[#2C4549] text-lg" value="Registration" />
+                                <input type="submit" className=" text-[#f3a648]  font-bold btn hover:bg-[#235259] bg-[#2C4549] text-lg" value="Registration" />
                             </div>
                         </form>
                         <div className="md:px-8 px-4 pb-7 font-primary text-center font-medium text-lg md:text-xl">

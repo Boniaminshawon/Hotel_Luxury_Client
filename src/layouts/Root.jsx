@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -6,9 +6,12 @@ import Footer from "../components/Footer";
 const Root = () => {
     return (
         <div className="">
-            <Navbar></Navbar>
+          <ScrollRestoration />
+          <div className="h-[78px]">
+          <Navbar></Navbar>
+          </div>
 
-          <div className="lg:container md:mx-1  lg:mx-auto" >
+          <div className="lg:container md:mx-1  lg:mx-auto min-h-screen" >
           <Outlet></Outlet>
           
           </div>

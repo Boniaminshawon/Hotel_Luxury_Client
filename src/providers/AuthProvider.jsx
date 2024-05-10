@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
     // observer
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            toast.success('Successfully Registered!');
+
             setUser(currentUser);
             setLoading(false);
 
