@@ -1,11 +1,11 @@
 import { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
-// import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const NewsLetter = () => {
     const [email, setEmail] = useState("");
-    const [isEmailValid, setIsEmailValid] = useState(true);
+    // const [isEmailValid, setIsEmailValid] = useState(true);
 
 
 
@@ -14,17 +14,17 @@ const NewsLetter = () => {
         const email = e.target.email.value;
         setEmail(email);
         if (email === "" || !/\S+@\S+\.\S+/.test(email)) {
-            setIsEmailValid(false);
+           
             toast.error('please enter a valid email');
 
         } else {
-            setIsEmailValid(true);
+            
             toast.success(`Thank you for subscribing with ${email}`);
             setEmail("");
         }
         e.target.reset();
     }
-    console.log(email)
+    
 
     return (
         <div>
