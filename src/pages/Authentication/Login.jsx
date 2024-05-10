@@ -63,16 +63,19 @@ const Login = () => {
     }
     if (user || loading) return
     return (
-        <div className="bg-opacity-100 flex justify-center bg-no-repeat bg-center bg-cover ">
+        
+        <div 
+        style={{ backgroundImage: 'url("https://i.ibb.co/8XSY87W/6b4d462d8680a7560cc10a055a7da325.jpg")' }}
+        className="bg-opacity-100 flex justify-center bg-no-repeat bg-center bg-cover ">
 
             <div className=" w-full lg:min-h-screen  g-base-200">
 
                 <div className="hero-content flex-col ">
 
-                    <div className="card shrink-0 p-0 w-full lg:w-[490px] shadow-2xl bg-base-100 ">
+                    <div className="card shrink-0 p-0 w-full lg:w-[490px] shadow-2xl opacity-70 bg-base-100 ">
 
                         <div className="text-center ">
-                            <h1 className="md:text-4xl text-[28px] mt-5 font-bold">Login now!</h1>
+                            <h1 className="md:text-4xl text-[28px] mt-5 font-bold font-primary">Login now!</h1>
                             <Link onClick={handleGoogleSignIn} className="flex items-center  justify-center mt-8  border rounded-lg   hover:bg-gray-50 ">
                                 <div className="px-4 py-2 text-center">
                                     <svg className="w-8 h-8" viewBox="0 0 40 40">
@@ -99,7 +102,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text text-lg font-medium">Email</span>
                                 </label>
-                                <input type="email" placeholder="Your Email" className="input input-bordered"
+                                <input type="email" placeholder="Your Email" className="input input-bordered text-lg"
                                     {...register("email")}
                                 />
 
@@ -121,10 +124,10 @@ const Login = () => {
                             </div>
 
                             <div className="form-control mt-6">
-                                <input type="submit" className="] text-[#f3a648] font-bold btn hover:bg-[#235259] bg-[#2C4549] text-lg" value="Login" />
+                                <input type="submit" className="] text-[#f3a648] font-secondary text-2xl font-bold btn hover:bg-[#235259] bg-[#2C4549] " value="Login" />
                             </div>
                         </form>
-                        <div className="pl-8 pb-7 font-primary font-medium text-lg text-center md:text-xl">
+                        <div className="pl-8 pb-7 font-primary font-medium text-lg text-center md:text-2xl">
                             <p>Don't have account? Please <Link className="underline text-[#235259] font-semibold text-xl md:text-2xl" to={'/registration'}>Register</Link></p>
                         </div>
                        

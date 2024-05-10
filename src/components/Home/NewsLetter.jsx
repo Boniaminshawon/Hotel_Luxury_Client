@@ -38,7 +38,7 @@ const NewsLetter = () => {
                             <div className="lg:max-w-lg">
                                 <h1 className="text-3xl py-3 font-secondary font-semibold text-black dark:text-white lg:text-[40px]">Subscribe Our <span className="text-[#2C4549]">Newsletter</span></h1>
 
-                                <p className="mt-3 text-gray-600 dark:text-gray-400">be the first to knows when our <span className="font-medium text-blue-500">Brand</span> is live</p>
+                                <p className="mt-3 font-secondary text-lg text-gray-600 dark:text-gray-400">Elevate your residential hotel experience with our newsletter, packed with insider tips, exclusive offers, and exciting updates tailored just for you.</p>
 
                                 <div className="flex flex-col mt-8 space-y-3 lg:space-y-0 lg:flex-row">
                                     <form onSubmit={handleSubmit}>

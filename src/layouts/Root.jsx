@@ -7,7 +7,7 @@ const Root = () => {
     return (
         <div className="">
           <ScrollRestoration />
-          <div className="h-[78px]">
+          <div className="h-[76px]">
           <Navbar></Navbar>
           </div>
 

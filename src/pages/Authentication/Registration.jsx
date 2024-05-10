@@ -57,14 +57,14 @@ const Registration = () => {
     };
 
     return (
-        <div style={{ backgroundImage: 'url("")' }} className=" flex justify-center ">
+        <div style={{ backgroundImage: 'url("https://i.ibb.co/1K4QH26/leonardo-3854685-117304286-157899.jpg")' }} className=" bg-opacity-100 flex justify-center bg-no-repeat bg-center bg-cover ">
 
-            <div className="md:hero w-full lg:min-h-screen b-base-200">
+            <div className="md:hero w-full lg:min-h-screen ">
                 <div className="hero-content flex-col ">
 
-                    <div className="card shrink-0 lg:w-[490px] w-full shadow-2xl  bg-base-100">
+                    <div className="card shrink-0 lg:w-[490px] w-full shadow-2xl  bg-base-100 opacity-85">
                         <div className="text-center ">
-                            <h1 className="md:text-4xl text-[28px] mt-5 font-bold">Registration now!</h1>
+                            <h1 className="md:text-4xl text-[28px] mt-5 font-bold font-primary">Registration now!</h1>
 
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -118,10 +118,10 @@ const Registration = () => {
                                 {errors.password && <span className="text-red-500 mt-2 text-lg">This field is required</span>}
                             </div>
                             <div className="form-control mt-6">
-                                <input type="submit" className=" text-[#f3a648]  font-bold btn hover:bg-[#235259] bg-[#2C4549] text-lg" value="Registration" />
+                                <input type="submit" className=" text-[#f3a648] font-secondary text-2xl  font-bold btn hover:bg-[#235259] bg-[#2C4549] " value="Registration" />
                             </div>
                         </form>
-                        <div className="md:px-8 px-4 pb-7 font-primary text-center font-medium text-lg md:text-xl">
+                        <div className="md:px-8 px-4 pb-7 font-primary text-center font-medium text-lg md:text-2xl">
                             <p>Already have account? Please <Link className="underline text-[#235259] font-semibold text-xl md:text-2xl" to={'/login'}>Login</Link></p>
                         </div>
                     </div>
