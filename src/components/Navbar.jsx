@@ -1,59 +1,71 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 
 
 
 const Navbar = () => {
-  const { user,logOut } = useAuth();
+  const { user, logOut } = useAuth();
 
   return (
     <div>
 
 
-      <div className="navbar bg-[#2C4549 bg-[#25393c]   text-white">
+      <div className="navbar bg-[#2C4549 bg-[#25393c]  font-secondary  text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>Item 1</a></li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li><a>Item 3</a></li>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#25393c] rounded-box w-36">
+            <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'rounded border border-white  ' : '  '}><button className=" text-lg">Home</button></NavLink></li>
+            <li><NavLink to={'/all-rooms'}  className={({ isActive }) => isActive ? 'rounded border border-white  ' : ' '}><button className="text-lg">All Rooms</button></NavLink></li>
+            <li><NavLink to={'/my-bookings'}  className={({ isActive }) => isActive ? 'rounded border border-white  ' : '  '}><button className="text-lg">My Bookings</button></NavLink></li>
             </ul>
           </div>
-          <Link to={'/'}>Hotel Luxury</Link>
+          <Link className="font-h font-bol text-5xl" to={'/'}>Hotel Luxury</Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden text-white  lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li><a>Item 1</a></li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </details>
-            </li>
-            <li><a>Item 3</a></li>
+            <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'rounded border border-white  ' : '  '}><button className=" text-lg">Home</button></NavLink></li>
+            <li><NavLink to={'/all-rooms'}  className={({ isActive }) => isActive ? 'rounded border border-white  ' : ' '}><button className="text-lg">All Rooms</button></NavLink></li>
+            <li><NavLink to={'/my-bookings'}  className={({ isActive }) => isActive ? 'rounded border border-white  ' : '  '}><button className="text-lg">My Bookings</button></NavLink></li>
+
           </ul>
         </div>
-        <div className="navbar-end">
-          {
-            user?<button onClick={logOut}>Logout</button>:<Link to={'/login'}>Login</Link>
+        <div className="navbar-end ">
+          {user ?
+
+            <div className="">
+
+              <div className="dropdown dropdown-bottom dropdown-hover dropdown-end text-black z-10">
+
+                <div tabIndex={0} role="button" className="w-12 tooltip   tooltip-info tooltip-left z-10 " >
+                  <img className="rounded-full md:h-[44px] md:w-[44px] h-[38px] w-[38px] bg-white" alt="" src={user?.photoURL || "https://i.ibb.co/L1kVMdW/images-removebg-preview.png"} />
+                </div>
+
+
+                <ul tabIndex={0} className="dropdown-content text-sm sm:text-lg font-semibold text-white bg-[#25393c] z-[1] menu  shadow rounded w-[100px] md:w-[110px]">
+
+                  {/* <li className="">{user.displayName || 'User Name not found'} </li>
+                  <hr /> */}
+                  <li> <button onClick={logOut} className="sm:py-2 py-1 px-3 sm:h-[44px] rounded  bg-[#25393c] border-white hover:bg-[#004274]  ">Log Out</button></li>
+                  <hr />
+                </ul>
+              </div>
+
+            </div>
+            :
+
+            <div className="space-x-2 flex">
+              <div className="hidden md:flex">
+                <Link to={'/register'} className=""> <button className=" py-1 text-sm sm:py-2 px-3 sm:h-[44px] font-semibold rounded  btn  xl:text-lg md:text-base bg-[#25393c] hover:text-black text-white">Sign Up</button></Link>
+              </div>
+              <div>
+                <Link to={'/login'}> <button className="md:py-1  py-[5px] text-sm sm:py-2 px-3 sm:h-[44px] font-semibold rounded bg-[#25393c] md:btn md:bg-[#25393c] md:text-white md:rounded hover:text-black xl:text-lg md:text-base text-white">Login</button></Link>
+              </div>
+            </div>
           }
-          
-          
-           
-          
         </div>
       </div>
     </div>

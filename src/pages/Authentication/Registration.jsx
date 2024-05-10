@@ -64,7 +64,7 @@ const Registration = () => {
 
                     <div className="card shrink-0 lg:w-[490px] w-full shadow-2xl  bg-base-100">
                         <div className="text-center ">
-                            <h1 className="md:text-4xl text-[28px] mt-5 font-bold">Register now!</h1>
+                            <h1 className="md:text-4xl text-[28px] mt-5 font-bold">Registration now!</h1>
 
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -118,7 +118,7 @@ const Registration = () => {
                                 {errors.password && <span className="text-red-500 mt-2 text-lg">This field is required</span>}
                             </div>
                             <div className="form-control mt-6">
-                                <input type="submit" className=" text-white font-bold btn hover:bg-[#235259] bg-[#2C4549] text-lg" value="Register" />
+                                <input type="submit" className=" text-white font-bold btn hover:bg-[#235259] bg-[#2C4549] text-lg" value="Registration" />
                             </div>
                         </form>
                         <div className="md:px-8 px-4 pb-7 font-primary text-center font-medium text-lg md:text-xl">

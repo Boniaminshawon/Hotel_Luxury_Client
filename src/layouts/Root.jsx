@@ -4,10 +4,12 @@ import Navbar from "../components/Navbar";
 
 const Root = () => {
     return (
-        <div className=" border-4  border-black">
+        <div className="">
             <Navbar></Navbar>
 
-            <Outlet></Outlet>
+          <div className="lg:container md:mx-1  lg:mx-auto" >
+          <Outlet></Outlet>
+          </div>
 
 
         </div>
