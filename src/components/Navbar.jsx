@@ -25,7 +25,10 @@ const Navbar = () => {
           </div>
           <Link className="font-h font-bol text-5xl" to={'/'}>Hotel <span className="text-white">Luxury</span></Link>
         </div>
-        <div className="navbar-center hidden text-[#f3a648] text-whit  lg:flex">
+
+
+
+        <div className="navbar-center hidden text-[#f3a648]   lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : '  '}><button className=" text-lg">Home</button></NavLink></li>
             <li><NavLink to={'/all-rooms'}  className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : ' '}><button className="text-lg">All Rooms</button></NavLink></li>

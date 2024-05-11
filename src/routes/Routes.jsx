@@ -6,12 +6,13 @@ import Registration from "../pages/Authentication/Registration";
 import Home from "../pages/Home";
 import AllRoom from "../pages/AllRoom";
 import MyBookings from "../pages/MyBookings";
+import RoomsDetails from "../components/RoomsDetails";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
-        errorElement:<Error></Error>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
             {
                 path: '/all-rooms',
                 element: <AllRoom></AllRoom>
+            },
+            {
+                path: '/all-rooms/:id',
+                element: <RoomsDetails></RoomsDetails>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/all-rooms/${params.id}`)
             },
             {
                 path: '/my-bookings',

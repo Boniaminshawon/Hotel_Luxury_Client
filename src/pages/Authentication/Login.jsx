@@ -5,14 +5,17 @@ import { useEffect, useState } from "react"
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import useAuth from "../../hooks/useAuth";
 
+import axios from "axios";
+
 
 
 const Login = () => {
-    const { signIn, googleSignIn,user,loading } = useAuth();
+    const { signIn, googleSignIn, user, loading } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+ 
     useEffect(() => {
         if (user) {
             navigate('/')
@@ -31,8 +34,17 @@ const Login = () => {
 
         try {
             //User Login
-            const result = await signIn(email, password)
+            const result = await signIn(email, password);
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_API_URL}/jwt`,
+                {
+                  email: result?.user?.email,
+                },
+                { withCredentials: true }
+              )
+              console.log(data)
             const user = result.user;
+
             if (user) {
                 navigate(location?.state || '/')
             }
@@ -48,25 +60,33 @@ const Login = () => {
 
     };
 
-    const handleGoogleSignIn =async () => {
+    const handleGoogleSignIn = async () => {
         try {
             // 1. google sign in from firebase
-            const result = await googleSignIn()
+            const result = await googleSignIn();
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_API_URL}/jwt`,
+                {
+                  email: result?.user?.email,
+                },
+                { withCredentials: true }
+              )
+              console.log(data)
             console.log(result.user)
-      
-           
-          } catch (err) {
+
+
+        } catch (err) {
             console.log(err)
             setLoginError(err?.message)
-          }
+        }
 
     }
     if (user || loading) return
     return (
-        
-        <div 
-        style={{ backgroundImage: 'url("https://i.ibb.co/8XSY87W/6b4d462d8680a7560cc10a055a7da325.jpg")' }}
-        className="bg-opacity-100 flex justify-center bg-no-repeat bg-center bg-cover ">
+
+        <div
+            style={{ backgroundImage: 'url("https://i.ibb.co/8XSY87W/6b4d462d8680a7560cc10a055a7da325.jpg")' }}
+            className="bg-opacity-100 flex justify-center bg-no-repeat bg-center bg-cover ">
 
             <div className=" w-full lg:min-h-screen  g-base-200">
 
@@ -130,7 +150,7 @@ const Login = () => {
                         <div className="pl-8 pb-7 font-primary font-medium text-lg text-center md:text-2xl">
                             <p>Don't have account? Please <Link className="underline text-[#235259] font-semibold text-xl md:text-2xl" to={'/registration'}>Register</Link></p>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>

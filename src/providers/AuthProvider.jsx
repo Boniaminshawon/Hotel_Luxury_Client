@@ -1,9 +1,10 @@
-import {  GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 
 
 import toast from "react-hot-toast";
 import auth from "../Firebase/firebase.config";
+import axios from "axios";
 
 
 
@@ -15,7 +16,7 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [reload, setReload] = useState(false);
     const googleProvider = new GoogleAuthProvider();
-    
+
 
 
 
@@ -38,8 +39,12 @@ const AuthProvider = ({ children }) => {
 
 
     //  Log Out
-    const logOut = () => {
+    const logOut = async () => {
         setLoading(true);
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/logout`, {
+            withCredentials: true,
+        })
+        console.log(data)
         return signOut(auth);
 
     }
