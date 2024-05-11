@@ -69,7 +69,7 @@ const Footer = () => {
 
 
 
-            <div className=" md:text-xl text-base text-amber-200 text- font-primary justify-center items-center gap-2  flex flex-col-reverse md:flex-row md:justify-between ">
+            <div className=" md:text-xl text-base text-[#d59344] text- font-primary justify-center items-center gap-2  flex flex-col-reverse md:flex-row md:justify-between ">
                 <div className=" "> <p className="">Copyright © 2024 - All right reserved</p></div>
                 <div className=" space-x-6 ">
                     <a className="underline" href="">Privacy policy</a>
