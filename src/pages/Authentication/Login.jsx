@@ -15,7 +15,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
- 
+
     useEffect(() => {
         if (user) {
             navigate('/')
@@ -38,11 +38,11 @@ const Login = () => {
             const { data } = await axios.post(
                 `${import.meta.env.VITE_API_URL}/jwt`,
                 {
-                  email: result?.user?.email,
+                    email: result?.user?.email,
                 },
                 { withCredentials: true }
-              )
-              console.log(data)
+            )
+            console.log(data)
             const user = result.user;
 
             if (user) {
@@ -67,12 +67,11 @@ const Login = () => {
             const { data } = await axios.post(
                 `${import.meta.env.VITE_API_URL}/jwt`,
                 {
-                  email: result?.user?.email,
+                    email: result?.user?.email,
                 },
                 { withCredentials: true }
-              )
-              console.log(data)
-            console.log(result.user)
+            );
+
 
 
         } catch (err) {

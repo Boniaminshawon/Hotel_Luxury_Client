@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import AllRoom from "../pages/AllRoom";
 import MyBookings from "../pages/MyBookings";
 import RoomsDetails from "../components/RoomsDetails";
+import Modal from "../components/Modal";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
             {
                 path: '/all-rooms/:id',
                 element: <RoomsDetails></RoomsDetails>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/all-rooms/${params.id}`)
+            },
+            {
+                path: '/all-rooms/:id',
+                element: <Modal></Modal> ,
                 loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/all-rooms/${params.id}`)
             },
             {
