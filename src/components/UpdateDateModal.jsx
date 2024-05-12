@@ -1,22 +1,19 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
-import Swal from "sweetalert2";
 
 
-
-const Modal = () => {
+const UpdateDateModal = () => {
     const room = useLoaderData();
-    const navigate = useNavigate();
     const { image, price_per_night, room_size, room_description } = room;
 
     const { user } = useAuth();
-    const handleBooking = async (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault();
         const email = user?.email;
         const name = e.target.name.value;
         const date = e.target.date.value;
-        console.log(date)
         const myRoomInfo = { name, email, date, image, price_per_night, room_size, room_description };
 
         try {
@@ -25,22 +22,16 @@ const Modal = () => {
                 myRoomInfo
             )
             if (data.insertedId) {
-                Swal.fire({
-                    title: "Congratulation!",
-                    text: "Successfully you booked this room",
-                    icon: "success"
-                });
-               
-                setTimeout(() => {
-                    navigate('/my-bookings')
-                    
-                }, 1000);
+                toast.success("Successfully you booked this room ");
 
             }
+
 
         } catch (err) {
             console.log(err)
         }
+
+
     }
 
     return (
@@ -56,7 +47,7 @@ const Modal = () => {
 
                     </div>
                     <p className="text-gray-500 text-xl font-medium font-secondary"><span className="font-semibold text-[#2e464a] text-xl underline ">Description: </span> {room_description}</p>
-                    <form onSubmit={handleBooking} >
+                    <form onSubmit={handleUpdate} >
                         <div>
                             <label className="text-lg font-semibold text-[#2e464a font-secondary">Your Name :</label>
                             <br />
@@ -81,13 +72,13 @@ const Modal = () => {
 
 
                     </form>
-                    {/* <div className="">
+                    <div className="">
                         <form method="dialog" className="modal-backdrop">
                             <button className="btn text-white bg-red-900 uppercase text-2xl font-bold">Close The PoP Up</button>
                         </form>
-                    </div> */}
+                    </div>
 
-                    
+                    <Toaster></Toaster>
                 </div>
 
             </dialog>
@@ -95,4 +86,4 @@ const Modal = () => {
     );
 };
 
-export default Modal;
+export default UpdateDateModal;

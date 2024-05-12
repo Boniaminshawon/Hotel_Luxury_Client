@@ -27,6 +27,14 @@ const Registration = () => {
             setRegisterError('Password should be at least 6 characters or longer');
             return;
         }
+        else if (!/[A-Z]/.test(password)) {
+            setRegisterError('Your password should have at least one uppercase character.');
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            setRegisterError('Your password should have at least one lowercase character.');
+            return;
+        }
         setRegisterError('');
 
         try {
@@ -35,7 +43,7 @@ const Registration = () => {
             swal("Wow!", "Registered successfully! You have to login now ", "success");
 
             await updateUserProfile(name, image)
-           
+
             setUser({ ...result?.user, photoURL: image, displayName: name });
             logOut();
             setTimeout(() => {
