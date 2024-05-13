@@ -11,7 +11,7 @@ const RoomsDetails = () => {
 
 
     const room = useLoaderData();
-    const { _id, image, price_per_night, room_size, price_range, status, room_description } = room;
+    const { _id, image, price_per_night, room_size, offer, price_range, status, room_description } = room;
     const navigate = useNavigate();
     const handleGoBack = () => {
         navigate(-1);
@@ -26,7 +26,7 @@ const RoomsDetails = () => {
                 title: "Sorry...",
                 text: "This room is already booking",
                 footer: 'Please try another one'
-              });
+            });
         }
         else {
             document.getElementById('my_modal_2').showModal();
@@ -43,7 +43,7 @@ const RoomsDetails = () => {
                 <p className="text-[#f9aa4a] text-xl font-medium font-secondary"><span className="font-semibold text-[#2C4549] text-xl ">Price Range: </span> {price_range}</p>
                 <p className="text-xl font-medium font-secondary ">Status: <span className={`text-[#f9aa4a] font-semibold ${status === 'Unavailable' && 'text-red-600'}`}>{status}</span></p>
 
-
+                <p className="text-[#f9aa4a] text-xl font-medium font-secondary"><span className="font-semibold text-[#2C4549] text-xl ">Special Offer: </span> {offer}</p>
 
                 <div className="flex justify-between">
                     <p className="text-[#f9aa4a] text-xl font-medium font-secondary"><span className="font-semibold text-[#2C4549] text-xl ">Price: </span> ${price_per_night}</p>

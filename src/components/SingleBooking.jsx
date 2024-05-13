@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
     const { _id, roomId, name, email, date, image, price_per_night, room_size, } = booking;
     const [preDate, setPreDate] = useState(date);
+  
 
 
     const handleUpdate = (e) => {
@@ -81,6 +82,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
         const rating = form.rating.value;
         const comment = form.comment.value;
         const review = { time, userName, rating, comment };
+       
         e.target.reset();
         // console.log(review);
 
