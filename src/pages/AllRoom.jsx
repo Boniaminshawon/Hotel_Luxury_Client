@@ -29,7 +29,7 @@ const AllRoom = () => {
                     id='price_range'
                     className='text-2xl font-medium font-p rounded py-2 text-white  bg-[#2C4549] mt-3'
                 >
-                    <option  value=''>Filter By Price</option>
+                    <option  value=''>Filter By Price Range</option>
                     <option className="" value='$100 - $150'>Price- $100 - $150</option>
                     <option value='$150 - $200'>Price- $150 - $200</option>
                     <option value='$200 - $250'>Price- $200 - $250</option>

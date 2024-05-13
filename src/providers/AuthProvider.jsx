@@ -8,7 +8,7 @@ import axios from "axios";
 
 
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
 
 const AuthProvider = ({ children }) => {
@@ -33,6 +33,7 @@ const AuthProvider = ({ children }) => {
 
     // google
     const googleSignIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider)
 
     };
@@ -58,7 +59,7 @@ const AuthProvider = ({ children }) => {
 
         });
         return () => {
-            unSubscribe();
+           return unSubscribe();
         }
     }, [reload]);
 

@@ -16,6 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const from = location.state?.from?.pathname || "/";
     useEffect(() => {
         if (user) {
             navigate('/')
@@ -46,7 +47,7 @@ const Login = () => {
             const user = result.user;
 
             if (user) {
-                navigate(location?.state || '/')
+                navigate(from,{replace:true})
             }
             toast.success('Signin Successful')
         } catch (err) {
