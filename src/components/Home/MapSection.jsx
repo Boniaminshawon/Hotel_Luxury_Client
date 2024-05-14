@@ -7,9 +7,9 @@ import { Map, Marker, ZoomControl } from "pigeon-maps"
 const MapSection = () => {
 
     return (
-        <div className="mt-16 mb-8">
-            <h1 className='text-4xl font-semibold text-center font-primary'> Find Our Location</h1>
-            <p className=" md:text-lg text-base font-secondary  text-center pb-5 md:px-10 px-1 lg:px-20 mt-7 mb-3">
+        <div className="md:mt-16 mt-8 ">
+            <h1 className='md:text-4xl  text-[28px] font-semibold text-center font-primary'> Find Our Location</h1>
+            <p className=" md:text-lg text-base font-secondary  text-center pb-5 md:px-10 px-1 lg:px-20 md:mt-7 my-3">
 
                 Find our Hotel Luxury  effortlessly on the map, situated in near the GEC area of Chattogram, Bangladesh. Our prime location offers guests the convenience of easy navigation to and from major transportation hubs and nearby landmarks. Experience the epitome of luxury hospitality with us, where comfort meets accessibility in the heart of Chattogram's vibrant cityscape.
             </p>

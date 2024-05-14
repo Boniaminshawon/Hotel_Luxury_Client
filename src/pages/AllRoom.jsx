@@ -31,7 +31,7 @@ const AllRoom = () => {
                     value={filter}
                     name='price_range'
                     id='price_range'
-                    className='text-2xl font-medium font-p rounded py-2 text-white  bg-[#2C4549] mt-3'
+                    className='md:text-2xl font-medium  rounded py-2 text-white  bg-[#2C4549] mt-3'
                 >
                     <option  value=''>Filter By Price Range</option>
                     <option className="" value='$100 - $150'>Price- $100 - $150</option>
@@ -40,7 +40,7 @@ const AllRoom = () => {
                 </select>
             </div>
          
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10">
                 {
                     rooms.map(room => <RoomsCard key={room._id} room={room}></RoomsCard>)
                 }

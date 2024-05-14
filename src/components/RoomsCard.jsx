@@ -13,7 +13,7 @@ const RoomsCard = ({ room }) => {
             className="shadow-lg rounded-md font-primary">
             
                 <Link to={`/all-rooms/${_id}`}>
-                    <img className="h-[310px]" src={image} alt="" />
+                    <img className="md:h-[310px] h-[225px] w-full" src={image} alt="" />
                     <div className="p-4 space-y-2">
                         <div className="flex justify-between">
 

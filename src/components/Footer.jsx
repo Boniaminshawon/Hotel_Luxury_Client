@@ -6,27 +6,27 @@ const Footer = () => {
         <div className=" bg-[#2C4549]  text-white lg:px-16  pb-4 pt-7 md:pt-16 md:pb-10  ">
             <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex-1 text-center space-y-3">
-                    <h3 className=" mb-2 font-bold text-xl md:text-3xl font-heading"><Link className="font-h " to={'/'}>Hotel Luxury</Link> </h3>
-                    <i className=" md:text-2xl text-lg font-medium "></i>
-                    <p className="font-secondary text-base md:text-xl"></p>
+                    <h3 className=" mb-2 font-bold text-3xl md:text-5xl font-heading"><Link className="font-h " to={'/'}>Hotel Luxury</Link> </h3>
+                  
+                    <p className="font-secondary text-base md:text-xl">Where opulent comfort meets unparalleled hospitality, creating an unforgettable residential experience that transcends mere accommodation.</p>
                 </div>
 
 
                 <div className="flex  flex-1 md:justify-around justify-between mt-5 md:mt-0 px-3">
                     <div className="space-y-3">
-                        <h3 className="tracking-wide  uppercase font-primary md:text-xl text-lg font-bold">Product</h3>
+                        <h3 className="tracking-wide  uppercase font-primary md:text-xl text-lg font-bold">Our Pages</h3>
                         <ul className="space-y-1 font-primary md:text-lg text-base">
                             <li>
-                                <a rel="noopener noreferrer" href="#">Features</a>
+                               <Link to={'/'}>Home</Link>
                             </li>
                             <li>
                                 {/* <a rel="noopener noreferrer" href="#">Integrations</a> */}
                             </li>
                             <li>
-                                <a rel="noopener noreferrer" href="#">Pricing</a>
+                            <Link to={'/all-rooms'}>All Rooms</Link>
                             </li>
                             <li>
-                                <a rel="noopener noreferrer" href="#">FAQ</a>
+                            <Link to={'/my-bookings'}>My Bookings</Link>
                             </li>
                         </ul>
                     </div>
@@ -52,7 +52,7 @@ const Footer = () => {
             <div className="border border-white my-4 md:my-7"></div>
 
 
-            <div className="space-y-7 text-center flex justify-center flex-col items-center">
+            <div className="md:space-y-7 space-y-3 text-center flex justify-center flex-col items-center">
                
                 <div className="uppercase font-primary text-white  md:text-xl text-lg font-bold">Social media</div>
                 <div className="flex gap-8">

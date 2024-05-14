@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
         const { data } = await axios(`${import.meta.env.VITE_API_URL}/logout`, {
             withCredentials: true,
         })
-        console.log(data)
+        // console.log(data)
         return signOut(auth);
 
     }
@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
 
         )
     }
-    console.log(user)
+    // console.log(user)
     const authInfo = { user, loading, setReload, setUser, createUser, signIn, googleSignIn, logOut, updateUserProfile }
     return (
 

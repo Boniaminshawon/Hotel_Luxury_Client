@@ -21,7 +21,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
         e.preventDefault();
         const date = e.target.updatedDate.value;
         // const updatedDate={date}
-        console.log('date is', date)
+     
         setPreDate(date)
         fetch(`${import.meta.env.VITE_API_URL}/bookings/${_id}`, {
             method: 'PATCH',
@@ -32,7 +32,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('updated date', data);
+          
                 if (data.modifiedCount > 0) {
 
                     swal("Wow!", "You updated the craft item successfully!", "success");
@@ -46,8 +46,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
 
 
     const handleDelete = (id) => {
-        console.log(id);
-        console.log(roomId)
+       
         Swal.fire({
             title: "Are you sure?",
             text: "Do you want to cancel your booking!",
@@ -79,7 +78,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                 const status = 'Available';
                 const { availability } = await axios.patch(
                     `${import.meta.env.VITE_API_URL}/status/${roomId}`, { status });
-                console.log(availability);
+            
             }
         });
     }
@@ -124,66 +123,23 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
         }
 
         e.target.reset();
-        console.log(review);
+       
     }
 
-
-
-    // const handleReview = async (e) => {
-    //     e.preventDefault();
-    //     const form = e.target;
-    //     const reviewId = roomId;
-    //     const time = form.time.value;
-    //     const userName = name;
-    //     const photo = user?.photoURL;
-    //     const rating = form.rating.value;
-    //     const comment = form.comment.value;
-    //     const review = { reviewId, time, userName, photo, rating, comment };
-    //     try {
-    //         const { data } = await axios.post(
-    //             `${import.meta.env.VITE_API_URL}/review`,
-    //             review
-    //         )
-    //         if (data.insertedId) {
-
-    //             Swal.fire({
-    //                 title: "Successful!",
-    //                 text: "You successfully post your reviews",
-    //                 icon: "success"
-    //             });
-    //             setTimeout(() => {
-    //                 navigation('/my-bookings')
-
-    //             }, 1000);
-    //         }
-
-    //     } catch (err) {
-
-    //         // toast.success(err.response.data);
-    //         const error = err.response.data;
-
-    //         toast.error(error);
-    //     }
-
-    //     e.target.reset();
-    //     console.log(review);
-
-    // }
-
     return (
-        <div className="flex flex-col md:flex-row border-[#a9712b] font-p border rounded shadow-xl  gap-5 p-3 ">
+        <div className="flex flex-col lg:flex-row border-[#a9712b] font-p border rounded shadow-xl  gap-5 p-3 ">
 
             <div>
-                <img className="h-full md:w-[340px] rounded" src={image} alt="" />
+                <img className="lg:h-full w-full h-[225px] md:h-[350px] lg:w-[340px] rounded" src={image} alt="" />
             </div>
 
-            <div className="space-y-4 flex-1  ">
+            <div className="md:space-y-4 space-y-2 flex-1  ">
 
 
 
-                <div className='flex justify-between'>
-                    <p className="text-[#f9aa4a] text-xl font-medium font-secondary"><span className="font-semibold text-[#2C4549] text-xl ">Price: </span> ${price_per_night} Per Night</p>
-                    <p className="text-[#fdac49] text-xl font-medium font-secondary"><span className="font-semibold text-[#2C4549] text-xl ">Room-Size:</span> {room_size}</p>
+                <div className='flex justify-between gap-2 md:flex-row flex-col'>
+                    <p className="text-[#f9aa4a] text-lg md:text-xl font-medium font-secondary"><span className="font-semibold text-[#2C4549] text-lg md:text-xl ">Price: </span> ${price_per_night} Per Night</p>
+                    <p className="text-[#fdac49] text-lg md:text-xl font-medium font-secondary"><span className="font-semibold text-[#2C4549] text-lg md:text-xl ">Room-Size:</span> {room_size}</p>
                 </div>
 
 
@@ -192,20 +148,20 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                     <div className=' '>
                         <div className=' flex justify-between'>
                             <div>
-                                <label className="text-lg font-semibold text-[#2e464a font-secondary">Expected Date :</label>
+                                <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Expected Date :</label>
                                 <br />
-                                <input readOnly value={preDate} required type="date" name="date" id="" className="border px-2 border-[#2e464a] text-lg py-1 text-[#fdac49] font-semibold rounded " />
+                                <input readOnly value={preDate} required type="date" name="date" id="" className="border px-2 border-[#2e464a] md:text-lg py-1 text-[#fdac49] font-semibold rounded " />
                             </div>
                             <div>
-                                <label className="text-lg font-semibold text-[#2e464a font-secondary">Updated Date :</label>
+                                <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Updated Date :</label>
                                 <br />
-                                <input required type="date" name="updatedDate" id="" className="border 2px-1 border-[#2e464a] text-lg py-1 text-black font-semibold rounded " />
+                                <input required type="date" name="updatedDate" id="" className="border 2px-1 border-[#2e464a] md:text-lg py-1 text-black font-semibold rounded " />
                             </div>
                         </div>
 
 
                         <div className='my-5'>
-                            <input type="submit" value="Update Date" className=" px-5 py-2 text-xl font-medium tracking-wider text-[#f3a648] uppercase  bg-[#2C4549] rounded hover:bg-gray-400 hover:text-white focus:outline-none " />
+                            <input type="submit" value="Update Date" className=" px-5 py-2 md:text-xl text-lg  font-bold md:font-medium tracking-wider text-[#f3a648] uppercase  bg-[#2C4549] rounded hover:bg-gray-400 hover:text-white focus:outline-none " />
                         </div>
 
                     </div>
@@ -216,7 +172,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                 <div className=" ">
 
                     <div>
-                        <button onClick={() => handleDelete(_id)} className="bg-red-600   py-2 px-3 text-white font-semibold text-lg font-secondar uppercase rounded">Cancel Booking</button>
+                        <button onClick={() => handleDelete(_id)} className="bg-red-600   py-2 px-4 md:px-3 text-white md:text-lg  font-bold md:font-medium  font-secondar uppercase rounded">Cancel Booking</button>
                     </div>
                 </div>
 
@@ -270,45 +226,41 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
             <div className="border border-[#b18b5e] "></div>
 
             <div className='flex-1 '>
-                <h1 className="font-bold text-2xl text-center">Post Your Review</h1>
+                <h1 className="font-bold md:text-3xl text-2xl font-primary text-center">Post Your Review</h1>
                 <form onSubmit={handleGiveReview}>
                     <div className='space-y-3'>
                         <div>
-                            <label className="text-lg font-semibold text-[#2e464a font-secondary">Local Time :</label>
+                            <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Local Time :</label>
                             <br />
 
-                            <input readOnly value={presentTime} type="text" name="time" id="" className='border border-[#2e464a] w-1/2 px-1 text-lg py-1 font-semibold rounded' />
+                            <input readOnly value={presentTime} type="text" name="time" id="" className='border border-[#2e464a] md:w-1/2 px-1 md:text-lg py-1 font-semibold rounded' />
 
                         </div>
 
 
-                        <div className='flex justify-between gap-3'>
+                        <div className='flex justify-between gap-3 md:flex-row flex-col'>
                             <div className='flex-1'>
-                                <label className="text-lg font-semibold text-[#2e464a font-secondary">Your Name :</label>
+                                <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Your Name :</label>
                                 <br />
-                                <input readOnly value={name} id="name" name='name' type="text" placeholder="Enter Your Name" className="border  px-1 border-[#2e464a] text-lg py-1 text-[#fdac49] font-semibold rounded  " />
+                                <input readOnly value={name} id="name" name='name' type="text" placeholder="Enter Your Name" className="border  px-1 border-[#2e464a] md:text-lg py-1 text-[#fdac49] font-semibold rounded  " />
                             </div>
                             <div className='flex-1'>
-                                <label className="text-lg font-semibold text-[#2e464a font-secondary">Rating :</label>
+                                <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Rating :</label>
                                 <br />
-                                <input name='rating' required min="1" max="5" id="name" type="number" placeholder="Enter Your Rating" className="border  px-1 border-[#2e464a] text-lg py-1 w-full text-[#fdac49] font-semibold rounded  " />
+                                <input name='rating' required min="1" max="5" id="name" type="number" placeholder="Enter Your Rating" className="border  px-1 border-[#2e464a] md:text-lg py-1 md:w-full text-[#fdac49] font-semibold rounded  " />
                             </div>
                         </div>
 
                         <div>
-                            <label className="text-lg font-semibold text-[#2e464a font-secondary">Comment :</label>
+                            <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Comment :</label>
                             <br />
 
-                            <textarea name='comment' required placeholder="Type Your Comment" className="textarea textarea-bordered text-lg border-[#2e464a] textarea-xs w-full" ></textarea>
+                            <textarea name='comment' required placeholder="Type Your Comment" className="textarea textarea-bordered md:text-lg border-[#2e464a] textarea-xs w-full" ></textarea>
                         </div>
-                        <input type="submit" value="Post" className='modal-action w-full px-5 py-1 text-lg font-medium tracking-wider text-[#f3a648] uppercase transition-colors duration-300 transform bg-[#2C4549] rounded lg:w-auto hover:bg-gray-400 hover:text-white focus:outline-none ' />
+                        <input type="submit" value="Post" className='modal-action w-full px-5 md:py-1 py-2 md:text-lg md:font-medium font-bold tracking-wider text-[#f3a648] uppercase transition-colors duration-300 transform bg-[#2C4549] rounded lg:w-auto hover:bg-gray-400 hover:text-white focus:outline-none ' />
                     </div>
                 </form>
-                {/* <div>
-                    <button
-                        onClick={handleGiveReview}
-                        className="w-full px-5 py-2 text-xl font-medium tracking-wider text-white uppercase  bg-[#2C4549] rounded hover:bg-gray-400 hover:text-white focus:outline-none " >Give Review</button>
-                </div> */}
+             
             </div>
         </div>
     );

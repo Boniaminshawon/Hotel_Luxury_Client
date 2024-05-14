@@ -17,7 +17,6 @@ const Home = () => {
             <Helmet>
                 <title>Home - Hotel Luxury</title>
             </Helmet>
-
             <Banner></Banner>
             <FeaturedRoom></FeaturedRoom>
             <Offer></Offer>

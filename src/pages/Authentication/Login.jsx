@@ -44,7 +44,7 @@ const Login = () => {
                 },
                 { withCredentials: true }
             )
-            console.log(data)
+            // console.log(data)
             const user = result.user;
 
             if (user) {
@@ -52,7 +52,7 @@ const Login = () => {
             }
             toast.success('Signin Successful')
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             setLoginError(err)
         }
 
@@ -77,7 +77,7 @@ const Login = () => {
 
 
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             setLoginError(err?.message)
         }
 

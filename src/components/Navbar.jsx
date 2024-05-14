@@ -17,13 +17,13 @@ const Navbar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#25393c] rounded-box w-36">
-            <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'rounded border border-white  ' : '  '}><button className=" text-lg">Home</button></NavLink></li>
-            <li><NavLink to={'/all-rooms'}  className={({ isActive }) => isActive ? 'rounded border border-white  ' : ' '}><button className="text-lg">All Rooms</button></NavLink></li>
-            <li><NavLink to={'/my-bookings'}  className={({ isActive }) => isActive ? 'rounded border border-white  ' : '  '}><button className="text-lg">My Bookings</button></NavLink></li>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#25393c] rounded-box w-40">
+            <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : '  '}><button className=" text-lg">Home</button></NavLink></li>
+            <li><NavLink to={'/all-rooms'}  className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : ' '}><button className="text-lg">All Rooms</button></NavLink></li>
+            <li><NavLink to={'/my-bookings'}  className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : '  '}><button className="text-lg">My Bookings</button></NavLink></li>
             </ul>
           </div>
-          <Link className="font-h font-bol text-5xl" to={'/'}>Hotel <span className="text-white">Luxury</span></Link>
+          <Link className="font-h font-bol md:text-4xl text-2xl  lg:text-5xl" to={'/'}>Hotel <span className="text-white">Luxury</span></Link>
         </div>
 
 
@@ -44,7 +44,7 @@ const Navbar = () => {
               <div className="dropdown dropdown-bottom dropdown-hover dropdown-end text-black z-10">
 
                 <div tabIndex={0} role="button" className="w-12 tooltip   tooltip-info tooltip-left z-10 " >
-                  <img className="rounded-full md:h-[44px] md:w-[44px] h-[38px] w-[38px] bg-white" alt="" src={user?.photoURL || "https://i.ibb.co/L1kVMdW/images-removebg-preview.png"} />
+                  <img className="rounded-full md:h-[44px] md:w-[44px] h-[32px] w-[32px] bg-white" alt="" src={user?.photoURL || "https://i.ibb.co/L1kVMdW/images-removebg-preview.png"} />
                 </div>
 
 

@@ -54,7 +54,7 @@ const Registration = () => {
             }, 2000);
         } catch (error) {
             swal("Oops!", "Your email already have used!", "error");
-            console.log(error);
+            // console.log(error);
         }
 
         resetField('email')

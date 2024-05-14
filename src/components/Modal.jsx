@@ -58,14 +58,14 @@ const Modal = () => {
         const status = 'Unavailable';
         const { availability } = await axios.patch(
             `${import.meta.env.VITE_API_URL}/status/${_id}`, { status });
-        console.log(availability);
+      
     }
 
     // const handleStatus = async (id, prevStatus, status) => {
-    //     console.log(id, prevStatus, status)
+    //     
     //     const { data } = await axios.patch(
     //         `${import.meta.env.VITE_API_URL}/status/${id}`, { status });
-    //     console.log(data);
+    //    
     // }
 
     return (
