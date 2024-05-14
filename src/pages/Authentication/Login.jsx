@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 
 
@@ -47,7 +48,7 @@ const Login = () => {
             const user = result.user;
 
             if (user) {
-                navigate(from,{replace:true})
+                navigate(from, { replace: true })
             }
             toast.success('Signin Successful')
         } catch (err) {
@@ -88,6 +89,9 @@ const Login = () => {
             style={{ backgroundImage: 'url("https://i.ibb.co/8XSY87W/6b4d462d8680a7560cc10a055a7da325.jpg")' }}
             className="bg-opacity-100 flex justify-center bg-no-repeat bg-center bg-cover ">
 
+            <Helmet>
+                <title>Login - Hotel Luxury</title>
+            </Helmet>
             <div className=" w-full lg:min-h-screen  g-base-200">
 
                 <div className="hero-content flex-col ">

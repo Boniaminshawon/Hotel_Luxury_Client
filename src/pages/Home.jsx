@@ -4,6 +4,7 @@ import MapSection from "../components/Home/MapSection";
 import NewsLetter from "../components/Home/NewsLetter";
 import Offer from "../components/Home/Offer";
 import FeaturedRoom from "../components/Home/FeaturedRoom";
+import { Helmet } from "react-helmet";
 
 
 const Home = () => {
@@ -12,6 +13,11 @@ const Home = () => {
     }, [])
     return (
         <div className="">
+
+            <Helmet>
+                <title>Home - Hotel Luxury</title>
+            </Helmet>
+
             <Banner></Banner>
             <FeaturedRoom></FeaturedRoom>
             <Offer></Offer>

@@ -5,6 +5,7 @@ import { useState } from "react";
 import swal from 'sweetalert';
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const Registration = () => {
     const [registerError, setRegisterError] = useState('');
@@ -66,7 +67,9 @@ const Registration = () => {
 
     return (
         <div style={{ backgroundImage: 'url("https://i.ibb.co/1K4QH26/leonardo-3854685-117304286-157899.jpg")' }} className=" bg-opacity-100 flex justify-center bg-no-repeat bg-center bg-cover ">
-
+            <Helmet>
+                <title>Registration - Hotel Luxury</title>
+            </Helmet>
             <div className="md:hero w-full lg:min-h-screen ">
                 <div className="hero-content flex-col ">
 

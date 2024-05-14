@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const FeaturedRoomsCard = ({ room }) => {
     const { _id, image, room_description, status, price_per_night } = room;
+    AOS.init();
     return (
         <div>
-            <div className="shadow-lg rounded-md font-primary">
+            <div 
+             data-aos-duration="1400" data-aos="zoom-in-up"
+            className="shadow-lg rounded-md font-primary">
                 
                     <img className="h-[310px]" src={image} alt="" />
                     <div className="p-4 space-y-2">

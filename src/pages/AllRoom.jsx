@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import RoomsCard from '../components/RoomsCard'
+import { Helmet } from "react-helmet";
 
 
 const AllRoom = () => {
@@ -16,6 +17,9 @@ const AllRoom = () => {
 
     return (
         <div>
+               <Helmet>
+                <title>All Room - Hotel Luxury</title>
+            </Helmet>
             <h1 className="text-center md:text-3xl text-2xl uppercase font-primary font-semibold md:mt-8 mt-5 bg-[#2C4549] text-white rounded py-3 md:py-5">Show Our All Room</h1>
 
             <div className="flex justify-center">

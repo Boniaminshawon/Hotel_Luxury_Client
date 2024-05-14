@@ -12,7 +12,7 @@ const FeaturedRoom = () => {
         }
         getData()
     }, []);
-    console.log(featuredRoom)
+    
     return (
         <div className="mt-16">
             <h1 className='text-4xl font-semibold text-center font-primary'>Our Featured Rooms</h1>
