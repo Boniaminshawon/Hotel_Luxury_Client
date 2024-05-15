@@ -4,23 +4,31 @@ import useAuth from "../hooks/useAuth";
 import SingleBooking from "../components/SingleBooking";
 import useAxios from "../hooks/useAxios";
 import { Helmet } from "react-helmet";
+import Loader from "../components/Loader";
+import axios from "axios";
 
 
 const MyBookings = () => {
     const { user } = useAuth();
     const axiosSecure = useAxios();
     const [myBookings, setMyBookings] = useState([]);
+    const [loading, setLoading] = useState(true);
    
     useEffect(() => {
+        setLoading(true)
         const getData = async () => {
-            const { data } = await axiosSecure(`/booking/${user?.email}`)
+           
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/booking/${user?.email}`)
             setMyBookings(data)
+            setLoading(false)
         }
 
         
         getData()
     }, [user, axiosSecure]);
-
+if(loading){
+    return<Loader></Loader>
+}
     return (
         <div>
             <Helmet>

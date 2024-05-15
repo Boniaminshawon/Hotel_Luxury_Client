@@ -17,7 +17,7 @@ const Modal = () => {
     const { _id, image, price_per_night, room_size, status, room_description } = room;
     const [error, setError] = useState('');
     const [startDate, setStartDate] = useState();
-
+    
     const { user } = useAuth();
     const handleBooking = async (e) => {
         e.preventDefault();
@@ -85,6 +85,7 @@ const Modal = () => {
         const myRoomInfo = { roomId, name, email, date, image, price_per_night, room_size, room_description };
 
         try {
+           
             const { data } = await axios.post(
                 `${import.meta.env.VITE_API_URL}/booking`,
                 myRoomInfo
