@@ -6,11 +6,13 @@ import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import Loader from "./Loader";
 
 
 
 const RoomsDetails = () => {
     const [review, setReview] = useState([]);
+    const [loading, setLoading] = useState(true);
     const { user } = useAuth();
     const room = useLoaderData();
     const { _id, image, price_per_night, room_size, offer, price_range, status, room_description } = room;
@@ -18,10 +20,11 @@ const RoomsDetails = () => {
 
     const reviewId = _id;
     useEffect(() => {
+        setLoading(true)
         const getData = async () => {
             const { data } = await axios(`${import.meta.env.VITE_API_URL}/review/${reviewId}`)
             setReview(data);
-
+setLoading(false)
 
         }
         getData();
@@ -47,7 +50,9 @@ const RoomsDetails = () => {
             document.getElementById('my_modal_2').showModal();
         }
     }
-
+if(loading){
+    return<Loader></Loader>
+}
     return (
         <div className="flex flex-col md:flex-row md:my-7 my-5 gap-6">
             <Helmet>

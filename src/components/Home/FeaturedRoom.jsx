@@ -1,18 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import FeaturedRoomsCard from "./FeaturedRoomsCard";
+import Loader from "../Loader";
 
 
 const FeaturedRoom = () => {
     const [featuredRoom, setFeaturedRoom] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
+        setLoading(true);
         const getData = async () => {
             const { data } = await axios(`${import.meta.env.VITE_API_URL}/feature/${'home'}`)
             setFeaturedRoom(data);
+            setLoading(false)
         }
         getData()
     }, []);
-    
+    if (loading) {
+        return <Loader></Loader>
+    }
     return (
         <div className="lg:mt-16 md:mt-10 mt-6">
             <h1 className='md:text-4xl  text-[28px] font-semibold text-center font-primary'>Our Featured Rooms</h1>

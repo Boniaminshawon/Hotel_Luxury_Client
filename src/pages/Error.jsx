@@ -5,7 +5,7 @@ const Error = () => {
     const error = useRouteError();
     console.log(error)
     return (
-        <div className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center">
+        <div className="min-h-screen bg-cover bg-center bg-no-repeat flex md:flex-row flex-col items-center justify-center">
         <div className="animate__animated animate__zoomIn">
             <img src="https://i.ibb.co/hXfLMyw/184996542-ilustraci-n-vectorial-isom-trica-sobre-fondo-gris-error-404-personas-junto-al-signo-de-adv.png" alt="" />
         </div>

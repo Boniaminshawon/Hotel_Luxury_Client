@@ -2,19 +2,25 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import RoomsCard from '../components/RoomsCard'
 import { Helmet } from "react-helmet";
+import Loader from "../components/Loader";
 
 
 const AllRoom = () => {
     const [rooms, setRooms] = useState([]);
     const [filter, setFilter] = useState('');
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
+        setLoading(true);
         const getData = async () => {
             const { data } = await axios(`${import.meta.env.VITE_API_URL}/all-rooms?filter=${filter}`)
-            setRooms(data)
+            setRooms(data);
+            setLoading(false)
         }
         getData()
     }, [filter]);
-
+if(loading){
+    return<Loader></Loader>
+}
     return (
         <div>
                <Helmet>
