@@ -11,7 +11,8 @@ import Testimonial from "../components/Home/Testimonial";
 const Home = () => {
     useEffect(() => {
         document.getElementById('my_modal_2').showModal()
-    }, [])
+    }, []);
+   
     return (
         <div className="">
 

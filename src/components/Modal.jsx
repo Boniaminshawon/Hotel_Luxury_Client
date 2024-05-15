@@ -32,6 +32,7 @@ const Modal = () => {
         const today = new Date().getDate();
         const deadLine = new Date(startDate).getDate();
         console.log('this month:',thisMonths,'deadLineMonth:',deadLineMonth)
+    
         if (today > deadLine && thisMonths === deadLineMonth) {
             console.log('first')
             navigate('/all-rooms')
@@ -39,9 +40,9 @@ const Modal = () => {
 
                 Swal.fire({
                     icon: "error",
-                    title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: '<a href="#">Why do I have this issue?</a>'
+                    title: "Sorry...",
+                    text: "You have to select the next days! Dont select the previous days",
+       
                 })
             )
         }
@@ -52,9 +53,9 @@ const Modal = () => {
 
                 Swal.fire({
                     icon: "error",
-                    title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: '<a href="#">Why do I have this issue?</a>'
+                    title: "Sorry...",
+                    text: "You have to select the next days! Dont select the previous days",
+                
                 })
             )
         }
@@ -65,9 +66,9 @@ const Modal = () => {
 
                 Swal.fire({
                     icon: "error",
-                    title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: '<a href="#">Why do I have this issue?</a>'
+                    title: "Sorry...",
+                    text: "You have to select the next days! Dont select the previous days",
+                    
                 })
             )
         }

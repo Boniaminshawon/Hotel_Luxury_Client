@@ -10,75 +10,72 @@ import { useNavigate } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import Timestamp from 'react-timestamp';
 
 const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
     const { user } = useAuth();
     const { _id, roomId, name, email, date, image, price_per_night, room_size, } = booking;
     const [preDate, setPreDate] = useState(date);
     const navigation = useNavigate();
-    // const presentTime = moment().format('MMMM Do YYYY, h:mm a');
-    // const [startDate, setStartDate] = useState(new Date());
+    const presentTime = moment().format('MMMM Do YYYY, h:mm a');
     const [updateDate, setUPdateDate] = useState();
 
-    // console.log(new Date(startDate).toLocaleDateString())
-    // const previousDate = moment(preDate).format('llll');
-    // console.log(moment(presentTime).format('llll'))
 
 
 
     const handleUpdate = (e) => {
         e.preventDefault();
-       
+
         const date = updateDate;
 
         const thisMonths = new Date().getMonth();
         const updatedMonth = new Date(date).getMonth();
-        
+
 
         const today = new Date().getDate();
         const deadLine = new Date(date).getDate();
         console.log('this month:', thisMonths, 'updatedMonth:', updatedMonth)
         if (today > deadLine && thisMonths === updatedMonth) {
             console.log('first')
-           
+
             return (
 
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Something went wrong!",
+                    text: "You have to select the next days! Dont select the previous days",
                     footer: '<a href="#">Why do I have this issue?</a>'
                 })
             )
         }
         if (thisMonths > updatedMonth) {
             console.log('middle')
-           
+
             return (
 
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Something went wrong!",
+                    text: "You have to select the next days! Dont select the previous days",
                     footer: '<a href="#">Why do I have this issue?</a>'
                 })
             )
         }
         if (today > deadLine && thisMonths > updatedMonth) {
             console.log('last')
-           
+
             return (
 
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: '<a href="#">Why do I have this issue?</a>'
+                    text: "You have to select the next days! Dont select the previous days",
+
                 })
             )
         }
 
-        
+
 
         // setPreDate(date)
         fetch(`${import.meta.env.VITE_API_URL}/bookings/${_id}`, {
@@ -110,6 +107,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
 
         // month
         const thisMonths = new Date().getMonth();
+
         const deadLineMonth = new Date(preDate).getMonth();
         console.log(thisMonths, deadLineMonth)
 
@@ -119,56 +117,25 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
         const tomorrow = new Date().getDate() + 1;
         const deadLine = new Date(preDate).getDate();
 
-        console.log('tomorrow', tomorrow)
-        console.log('today', today)
-        console.log('deadline', deadLine)
 
-
-
-
-        if (today > deadLine && thisMonths === deadLineMonth) {
-
-            return Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: '<a href="#">Why do I have this issue?</a>'
-            });
-        }
-
-
-
-
-
-        // tomorrow
-        if (tomorrow === deadLine) {
-
-            return Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: '<a href="#">Why do I have this issue?</a>'
-            });
-        }
         // today
         if (today === deadLine) {
-
+            console.log('ajkei apnar deadline')
             return Swal.fire({
                 icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: '<a href="#">Why do I have this issue?</a>'
+                title: "Sorry...",
+                text: "You can not cancel booking your deadline date!",
+
             });
         }
-        // month
-        if (thisMonths > deadLineMonth) {
-            console.log('mas ta boro')
-
+        // tomorrow
+        if (tomorrow === deadLine) {
+            console.log('agamikal ampnar dead line')
             return Swal.fire({
                 icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: '<a href="#">Why do I have this issue?</a>'
+                title: "Sorry...",
+                text: "You Can not cancel booking the previous date of deadline!",
+
             });
         }
 
@@ -208,45 +175,72 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
         });
     }
 
-
     const handleGiveReview = async (e) => {
 
 
         e.preventDefault();
+
         const form = e.target;
+
         const reviewId = roomId;
         const time = form.time.value;
+        // const time = presentTime;
+
+
         const userName = name;
         const photo = user?.photoURL;
         const rating = form.rating.value;
         const comment = form.comment.value;
+
         const review = { reviewId, time, userName, photo, rating, comment };
-        console.log(time)
-        try {
-            const { data } = await axios.post(
-                `${import.meta.env.VITE_API_URL}/review`,
-                review
-            )
-            if (data.insertedId) {
 
-                Swal.fire({
-                    title: "Successful!",
-                    text: "You successfully post your reviews",
-                    icon: "success"
-                });
-                setTimeout(() => {
-                    navigation('/my-bookings')
+        const todays = new Date().getDate();
+        // const todaysHour = new Date().getHours();
+        const timesDays = new Date(time).getDate();
+        // const timesHour = new Date(time).getHours();
 
-                }, 1000);
+    
+        if (todays !== timesDays ){
+            return Swal.fire({
+                icon: "error",
+                title: "Sorry...",
+                text: "Please press the Today button from the calender! Dont try to edit time",
+
+            });
+        }
+
+
+            try {
+                const { data } = await axios.post(
+                    `${import.meta.env.VITE_API_URL}/review`,
+                    review
+                )
+                if (data.insertedId) {
+
+                    Swal.fire({
+                        title: "Successful!",
+                        text: "You successfully post your reviews",
+                        icon: "success"
+                    });
+                    setTimeout(() => {
+                        navigation('/my-bookings')
+
+                    }, 1000);
+                }
+
+            } catch (err) {
+
+                // toast.success(err.response.data);
+                const error = err.response.data;
+
+                toast.error(error);
             }
 
-        } catch (err) {
 
-            // toast.success(err.response.data);
-            const error = err.response.data;
 
-            toast.error(error);
-        }
+
+
+
 
         e.target.reset();
 
@@ -266,7 +260,9 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                 <div className='flex justify-between gap-2 md:flex-row flex-col'>
                     <p className="text-[#f9aa4a] text-lg md:text-xl font-medium font-secondary"><span className="font-semibold text-[#2C4549] text-lg md:text-xl ">Price: </span> ${price_per_night} Per Night</p>
                     <p className="text-[#fdac49] text-lg md:text-xl font-medium font-secondary"><span className="font-semibold text-[#2C4549] text-lg md:text-xl ">Room-Size:</span> {room_size}</p>
+
                 </div>
+
 
 
 
@@ -278,7 +274,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                                 <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Expected Date :</label>
                                 <br />
                                 <span className='border  px-2 border-[#2e464a] md:text-lg py-1 text-[#fdac49] font-semibold rounded '> {new Date(preDate).toLocaleDateString()}</span>
-                                {/* <input readOnly value={preDate} required type="date" name="date" id="" className="border px-2 border-[#2e464a] md:text-lg py-1 text-[#fdac49] font-semibold rounded " /> */}
+
                             </div>
                             <div className=''>
                                 <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Updated Date :</label>
@@ -288,7 +284,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                                     selected={updateDate}
                                     onChange={date => setUPdateDate(date)}
                                 />
-                                {/* <input required type="date" name="updatedDate" id="" className="border 2px-1 border-[#2e464a] md:text-lg py-1 text-black font-semibold rounded " /> */}
+
                             </div>
                         </div>
 
@@ -365,7 +361,8 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                         <div>
                             <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Local Time :</label>
                             <br />
-                            <input type="datetime-local" name="time" id="" />
+
+                            <input required type="datetime-local" name="time" id="" className=' border border-[#2e464a] md:w-1/2 px-1 md:text-lg py-1 font-semibold rounded' />
                             {/* <input readOnly value={presentTime} type="text" name="time" id="" className='border border-[#2e464a] md:w-1/2 px-1 md:text-lg py-1 font-semibold rounded' /> */}
 
                         </div>
