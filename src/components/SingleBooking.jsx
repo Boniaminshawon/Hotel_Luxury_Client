@@ -7,37 +7,98 @@ import Swal from "sweetalert2";
 import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
     const { user } = useAuth();
     const { _id, roomId, name, email, date, image, price_per_night, room_size, } = booking;
     const [preDate, setPreDate] = useState(date);
     const navigation = useNavigate();
-    const presentTime = moment().format('MMMM Do YYYY, h:mm a');
+    // const presentTime = moment().format('MMMM Do YYYY, h:mm a');
+    // const [startDate, setStartDate] = useState(new Date());
+    const [updateDate, setUPdateDate] = useState();
+
+    // console.log(new Date(startDate).toLocaleDateString())
+    // const previousDate = moment(preDate).format('llll');
+    // console.log(moment(presentTime).format('llll'))
 
 
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        const date = e.target.updatedDate.value;
-        // const updatedDate={date}
-     
-        setPreDate(date)
+       
+        const date = updateDate;
+
+        const thisMonths = new Date().getMonth();
+        const updatedMonth = new Date(date).getMonth();
+        
+
+        const today = new Date().getDate();
+        const deadLine = new Date(date).getDate();
+        console.log('this month:', thisMonths, 'updatedMonth:', updatedMonth)
+        if (today > deadLine && thisMonths === updatedMonth) {
+            console.log('first')
+           
+            return (
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                })
+            )
+        }
+        if (thisMonths > updatedMonth) {
+            console.log('middle')
+           
+            return (
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                })
+            )
+        }
+        if (today > deadLine && thisMonths > updatedMonth) {
+            console.log('last')
+           
+            return (
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                })
+            )
+        }
+
+        
+
+        // setPreDate(date)
         fetch(`${import.meta.env.VITE_API_URL}/bookings/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ preDate })
+            // body: JSON.stringify({ preDate })
+            body: JSON.stringify({ date })
         })
             .then(res => res.json())
             .then(data => {
-          
+
                 if (data.modifiedCount > 0) {
 
                     swal("Wow!", "You updated the craft item successfully!", "success");
+                    setPreDate(date)
 
                 }
+
             });
 
 
@@ -46,7 +107,71 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
 
 
     const handleDelete = (id) => {
-       
+
+        // month
+        const thisMonths = new Date().getMonth();
+        const deadLineMonth = new Date(preDate).getMonth();
+        console.log(thisMonths, deadLineMonth)
+
+
+        // day
+        const today = new Date().getDate();
+        const tomorrow = new Date().getDate() + 1;
+        const deadLine = new Date(preDate).getDate();
+
+        console.log('tomorrow', tomorrow)
+        console.log('today', today)
+        console.log('deadline', deadLine)
+
+
+
+
+        if (today > deadLine && thisMonths === deadLineMonth) {
+
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+
+
+
+
+
+        // tomorrow
+        if (tomorrow === deadLine) {
+
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+        // today
+        if (today === deadLine) {
+
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+        // month
+        if (thisMonths > deadLineMonth) {
+            console.log('mas ta boro')
+
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+
         Swal.fire({
             title: "Are you sure?",
             text: "Do you want to cancel your booking!",
@@ -78,7 +203,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                 const status = 'Available';
                 const { availability } = await axios.patch(
                     `${import.meta.env.VITE_API_URL}/status/${roomId}`, { status });
-            
+
             }
         });
     }
@@ -96,6 +221,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
         const rating = form.rating.value;
         const comment = form.comment.value;
         const review = { reviewId, time, userName, photo, rating, comment };
+        console.log(time)
         try {
             const { data } = await axios.post(
                 `${import.meta.env.VITE_API_URL}/review`,
@@ -123,7 +249,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
         }
 
         e.target.reset();
-       
+
     }
 
     return (
@@ -147,15 +273,22 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                 <form onSubmit={handleUpdate}>
                     <div className=' '>
                         <div className=' flex justify-between'>
-                            <div>
+
+                            <div className=' '>
                                 <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Expected Date :</label>
                                 <br />
-                                <input readOnly value={preDate} required type="date" name="date" id="" className="border px-2 border-[#2e464a] md:text-lg py-1 text-[#fdac49] font-semibold rounded " />
+                                <span className='border  px-2 border-[#2e464a] md:text-lg py-1 text-[#fdac49] font-semibold rounded '> {new Date(preDate).toLocaleDateString()}</span>
+                                {/* <input readOnly value={preDate} required type="date" name="date" id="" className="border px-2 border-[#2e464a] md:text-lg py-1 text-[#fdac49] font-semibold rounded " /> */}
                             </div>
-                            <div>
+                            <div className=''>
                                 <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Updated Date :</label>
                                 <br />
-                                <input required type="date" name="updatedDate" id="" className="border 2px-1 border-[#2e464a] md:text-lg py-1 text-black font-semibold rounded " />
+                                <DatePicker
+                                    className='border md:w-3/5  px-1 border-[#2e464a] md:text-lg py-[3px] text-black font-semibold rounded '
+                                    selected={updateDate}
+                                    onChange={date => setUPdateDate(date)}
+                                />
+                                {/* <input required type="date" name="updatedDate" id="" className="border 2px-1 border-[#2e464a] md:text-lg py-1 text-black font-semibold rounded " /> */}
                             </div>
                         </div>
 
@@ -232,8 +365,8 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                         <div>
                             <label className="md:text-lg font-semibold text-[#2e464a font-secondary">Local Time :</label>
                             <br />
-
-                            <input readOnly value={presentTime} type="text" name="time" id="" className='border border-[#2e464a] md:w-1/2 px-1 md:text-lg py-1 font-semibold rounded' />
+                            <input type="datetime-local" name="time" id="" />
+                            {/* <input readOnly value={presentTime} type="text" name="time" id="" className='border border-[#2e464a] md:w-1/2 px-1 md:text-lg py-1 font-semibold rounded' /> */}
 
                         </div>
 
@@ -260,7 +393,7 @@ const SingleBooking = ({ booking, setMyBookings, myBookings }) => {
                         <input type="submit" value="Post" className='modal-action w-full px-5 md:py-1 py-2 md:text-lg md:font-medium font-bold tracking-wider text-[#f3a648] uppercase transition-colors duration-300 transform bg-[#2C4549] rounded lg:w-auto hover:bg-gray-400 hover:text-white focus:outline-none ' />
                     </div>
                 </form>
-             
+
             </div>
         </div>
     );

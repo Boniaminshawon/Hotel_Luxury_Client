@@ -16,7 +16,7 @@ const MapSection = () => {
             <Map
                 provider={osm}
                 dprs={[1, 2]}
-                height={430}
+                height={420}
                 defaultCenter={[22.3586, 91.8201]}
                 defaultZoom={15}>
                 <Marker width={60} anchor={[22.3586, 91.820]} />
