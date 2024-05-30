@@ -25,7 +25,8 @@ const MyBookings = () => {
 
         
         getData()
-    }, [user, axiosSecure]);
+    }, [user]);
+    console.log(myBookings)
 if(loading){
     return<Loader></Loader>
 }

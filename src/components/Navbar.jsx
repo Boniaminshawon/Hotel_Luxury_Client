@@ -21,6 +21,7 @@ const Navbar = () => {
             <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : '  '}><button className=" text-lg">Home</button></NavLink></li>
             <li><NavLink to={'/all-rooms'}  className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : ' '}><button className="text-lg">All Rooms</button></NavLink></li>
             <li><NavLink to={'/my-bookings'}  className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : '  '}><button className="text-lg">My Bookings</button></NavLink></li>
+         
             </ul>
           </div>
           <Link className="font-h font-bol md:text-4xl text-2xl  lg:text-5xl" to={'/'}>Hotel <span className="text-white">Luxury</span></Link>
@@ -33,6 +34,7 @@ const Navbar = () => {
             <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : '  '}><button className=" text-lg">Home</button></NavLink></li>
             <li><NavLink to={'/all-rooms'}  className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : ' '}><button className="text-lg">All Rooms</button></NavLink></li>
             <li><NavLink to={'/my-bookings'}  className={({ isActive }) => isActive ? 'rounded border border-[#f3a648]  ' : '  '}><button className="text-lg">My Bookings</button></NavLink></li>
+          
 
           </ul>
         </div>
@@ -48,11 +50,14 @@ const Navbar = () => {
                 </div>
 
 
-                <ul tabIndex={0} className="dropdown-content text-sm sm:text-lg font-semibold text-[#f3a648] bg-[#25393c] z-[1] menu  shadow rounded w-[100px] md:w-[110px]">
+                <ul tabIndex={0} className="dropdown-content text-sm sm:text-lg font-semibold text-[#f3a648] text-left bg-[#25393c] z-[1] menu  shadow rounded w-[100px] md:w-[120px]">
 
-                  {/* <li className="">{user.displayName || 'User Name not found'} </li>
-                  <hr /> */}
-                  <li> <button onClick={logOut} className="sm:py-2 py-1 px-3 sm:h-[44px] rounded  bg-[#25393c] border-[#f3a648] hover:bg-[#004274]  ">Log Out</button></li>
+             
+                  <li className="border-[#f3a648] ">
+                    <Link to='dashboard/manageRoom' className="sm:py-2 py-1 px-3 sm:h-[44px] rounded   border-[#f3a648]  ">Dashboard</Link>
+                  </li>
+                  <hr />
+                  <li> <button onClick={logOut} className="sm:py-2 py-1 px-3 sm:h-[44px] rounded   border-[#f3a648]   ">Log Out</button></li>
                   <hr />
                 </ul>
               </div>

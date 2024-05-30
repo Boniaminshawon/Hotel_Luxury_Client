@@ -20,7 +20,7 @@ const Testimonial = () => {
             .then(res => res.json())
             .then(data => {
 
-                setReview(data);
+                setReview(data?.reverse());
                 setLoading(false)
 
 
