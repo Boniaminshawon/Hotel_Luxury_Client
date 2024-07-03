@@ -18,4 +18,10 @@ This project involves developing a hotel booking website featuring integrated ma
 
 
 ## Technology:
-- HTML -CSS -React.js -Node.js -Express.js -JWT Token -Mongodb
+- HTML , Tailwind-CSS , React.js , Firebase-auth , swiper-slider , react-helmet, react-hook-form , react-hot-toast, switealeart .
+
+## How to set Up the project locally:
+- Clone this repository
+- Install npm
+- Install and login firebase
+- npm run dev in your terminal .
